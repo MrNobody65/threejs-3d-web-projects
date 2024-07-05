@@ -1,7 +1,6 @@
 import * as THREE from "three"
 import { OrbitControls } from "jsm/controls/OrbitControls.js"
 import getStarfield from "./src/getStarfield.js"
-import { getFresnelMat } from "./src/getFresnelMesh.js"
 
 const w = window.innerWidth
 const h = window.innerHeight
@@ -48,11 +47,6 @@ const cloudsMesh = new THREE.Mesh(geometry, cloudsMat)
 cloudsMesh.scale.setScalar(1.002)
 earthGroup.add(cloudsMesh)
 
-// const fresnelMat = getFresnelMat()
-// const glowMesh = new THREE.Mesh(geometry, fresnelMat)
-// glowMesh.scale.setScalar(1.004)
-// earthGroup.add(glowMesh)
-
 const stars = getStarfield({ numStars: 2000 })
 scene.add(stars)
 
@@ -65,7 +59,6 @@ function animate() {
     earthMesh.rotation.y += 0.002
     lightsMesh.rotation.y += 0.002
     cloudsMesh.rotation.y += 0.0025
-    // glowMesh.rotation.y += 0.002
     stars.rotation.y += 0.00005
     renderer.render(scene, camera)
 }
@@ -73,8 +66,8 @@ function animate() {
 animate()
 
 function handleWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth, window.innerHeight)
 }
-window.addEventListener('resize', handleWindowResize, false);
+window.addEventListener('resize', handleWindowResize, false)

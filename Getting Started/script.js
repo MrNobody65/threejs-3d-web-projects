@@ -12,7 +12,7 @@ const aspect = w / h
 const near = 0.1
 const far = 10
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-camera.position.z = 2
+camera.position.z = 5
 
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
@@ -40,7 +40,6 @@ scene.add(hemiLight)
 
 function animate(t = 0) {
     requestAnimationFrame(animate)
-    // mesh.rotation.y = t * 0.0003
     renderer.render(scene, camera)
     controls.update()
 }
